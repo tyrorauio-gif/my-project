@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-    <!-- ШАПКА -->
     <div id="top" class="header">
         <div class="header-content">
             <div class="nav-menu">
@@ -15,7 +14,6 @@
                 <a href="../materials.html">Материалы</a>
                 <a href="../news.html">Новости</a>
                 <a href="../contacts.html">Контакты</a>
-                <button id="themeToggle" class="theme-toggle">🌙</button>
             </div>
         </div>
     </div>
@@ -49,47 +47,19 @@
         </div>
     </div>
     
-    <!-- ПОДВАЛ -->
     <div class="footer">
         <p>© 2026 Личный сайт учителя Хамидуллина Альберта Фирдавесовича</p>
         <p>Все права защищены</p>
     </div>
     
+    <button id="themeToggle" class="theme-toggle-fixed" aria-label="Переключить тему">🌙</button>
     <button id="scrollToTopBtn" class="scroll-to-top" title="Наверх">↑</button>
+    
     <div id="photoModal" class="modal" onclick="closeModal()">
         <span class="modal-close" onclick="closeModal()">&times;</span>
         <img class="modal-content" id="modalImage">
     </div>
     
     <script src="../js/common.js"></script>
-    <script>
-        // Применяем класс body.dark для стилизации
-        function updateBodyThemeClass() {
-            const isDark = document.querySelector('link[href="../css/dark-theme.css"]') !== null;
-            if (isDark) {
-                document.body.classList.add('dark');
-            } else {
-                document.body.classList.remove('dark');
-            }
-        }
-        
-        const observer = new MutationObserver(function(mutations) {
-            mutations.forEach(function(mutation) {
-                if (mutation.type === 'childList') {
-                    updateBodyThemeClass();
-                }
-            });
-        });
-        
-        observer.observe(document.head, { childList: true, subtree: true });
-        updateBodyThemeClass();
-        
-        const themeToggleBtn = document.getElementById('themeToggle');
-        if (themeToggleBtn) {
-            themeToggleBtn.addEventListener('click', function() {
-                setTimeout(updateBodyThemeClass, 50);
-            });
-        }
-    </script>
 </body>
 </html>

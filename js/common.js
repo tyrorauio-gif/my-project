@@ -67,12 +67,23 @@ if (scrollToTopBtn) {
 const themeToggle = document.getElementById('themeToggle');
 const savedTheme = localStorage.getItem('theme');
 
+// Определяем правильный путь к dark-theme.css в зависимости от страницы
+function getDarkThemePath() {
+    if (window.location.pathname.includes('/news/')) {
+        return '../css/dark-theme.css';
+    }
+    return 'css/dark-theme.css';
+}
+
 function enableDarkTheme() {
+    if (document.getElementById('darkTheme')) return;
+    
     const link = document.createElement('link');
     link.rel = 'stylesheet';
-    link.href = 'css/dark-theme.css';
+    link.href = getDarkThemePath();
     link.id = 'darkTheme';
     document.head.appendChild(link);
+    document.body.classList.add('dark');
 }
 
 function disableDarkTheme() {
@@ -80,25 +91,32 @@ function disableDarkTheme() {
     if (darkTheme) {
         darkTheme.remove();
     }
+    document.body.classList.remove('dark');
 }
 
+function setTheme(isDark) {
+    if (isDark) {
+        enableDarkTheme();
+        if (themeToggle) themeToggle.textContent = '☀️';
+        localStorage.setItem('theme', 'dark');
+    } else {
+        disableDarkTheme();
+        if (themeToggle) themeToggle.textContent = '🌙';
+        localStorage.setItem('theme', 'light');
+    }
+}
+
+// Применяем тему при загрузке
 if (savedTheme === 'dark') {
-    enableDarkTheme();
-    if (themeToggle) themeToggle.textContent = '☀️';
+    setTheme(true);
 } else {
-    if (themeToggle) themeToggle.textContent = '🌙';
+    setTheme(false);
 }
 
+// Обработчик клика на кнопку темы
 if (themeToggle) {
     themeToggle.addEventListener('click', function() {
-        if (document.querySelector('link[href="css/dark-theme.css"]')) {
-            disableDarkTheme();
-            themeToggle.textContent = '🌙';
-            localStorage.setItem('theme', 'light');
-        } else {
-            enableDarkTheme();
-            themeToggle.textContent = '☀️';
-            localStorage.setItem('theme', 'dark');
-        }
+        const isDark = document.body.classList.contains('dark');
+        setTheme(!isDark);
     });
 }

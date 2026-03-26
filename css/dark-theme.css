@@ -1,148 +1,211 @@
 /* ========== ТЕМНАЯ ТЕМА ========== */
 
 /* Общий фон страницы — темный */
-body {
+body.dark {
     background-color: #1a1a2e;
 }
 
+/* Шапка в темной теме */
+body.dark .header {
+    background: linear-gradient(135deg, #0f0f1a, #1a1a2e);
+}
+
 /* Белые блоки становятся темными с тонкой обводкой */
-.teacher-info,
-.card {
+body.dark .teacher-info,
+body.dark .card {
     background: #16213e;
     border: 1px solid #2a2a3a;
 }
 
-.teacher-info:hover,
-.card:hover {
+body.dark .teacher-info:hover,
+body.dark .card:hover {
     border-color: #ffd700;
 }
 
-/* Убираем затемнение в главном блоке с фоном */
-.hero-fullwidth .hero-overlay {
-    background: transparent;
-}
-
 /* Текст в блоках */
-.teacher-text h2,
-.section-title,
-.card h3 {
+body.dark .teacher-text h2,
+body.dark .section-title,
+body.dark .card h3 {
     color: #e0e0e0;
 }
 
-.teacher-text p,
-.teacher-text li,
-.card p {
+body.dark .teacher-text p,
+body.dark .teacher-text li,
+body.dark .card p {
     color: #b0b0b0;
 }
 
 /* Заголовки разделов */
-.section-title {
+body.dark .section-title {
     color: #ffffff;
     border-bottom-color: #ffd700;
 }
 
 /* Карточки */
-.card {
-    box-shadow: none;
-}
-
-.card:hover {
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-}
-
-.card h3 {
+body.dark .card h3 {
     color: #ffd700;
 }
 
-.card-link {
+body.dark .card-link {
     color: #ffd700;
 }
 
 /* Кнопка "Написать" в темной теме */
-.btn {
+body.dark .btn {
     background: linear-gradient(135deg, #ffd700, #ffb347);
     color: #1a1a2e;
 }
 
-.btn:hover {
+body.dark .btn:hover {
     box-shadow: 0 5px 15px rgba(255,215,0,0.4);
 }
 
-/* Шапка в темной теме */
-.header {
-    background: linear-gradient(135deg, #0f0f1a, #1a1a2e);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-}
-
 /* Подвал в темной теме */
-.footer {
+body.dark .footer {
     background: #0a0a14;
 }
 
 /* Кнопка "Наверх" в темной теме */
-.scroll-to-top {
+body.dark .scroll-to-top {
     background: #ffd700;
     color: #1a1a2e;
 }
 
-.scroll-to-top:hover {
+body.dark .scroll-to-top:hover {
+    background: #ffb347;
+}
+
+/* Кнопка темы в темной теме */
+body.dark .theme-toggle-fixed {
+    background: #ffd700;
+    color: #1a1a2e;
+}
+
+body.dark .theme-toggle-fixed:hover {
     background: #ffb347;
 }
 
 /* Модальное окно */
-.modal {
+body.dark .modal {
     background-color: rgba(0, 0, 0, 0.95);
 }
 
-/* Адаптивность для темной темы */
-@media (max-width: 768px) {
-    .teacher-info,
-    .card {
-        background: #16213e;
-    }
-}
-
-/* ========== СТИЛИ ДЛЯ НОВОСТНОЙ ЛЕНТЫ (ТЕМНАЯ ТЕМА) ========== */
-
-.news-feed::before,
-.news-feed::after {
+/* ========== НОВОСТНАЯ ЛЕНТА (ТЕМНАЯ ТЕМА) ========== */
+body.dark .news-feed::before,
+body.dark .news-feed::after {
     background: #2a2a3a;
 }
 
-.news-item {
+body.dark .news-item {
     background: #16213e;
 }
 
-.news-item:hover {
+body.dark .news-item:hover {
     background: #1a1a2e;
 }
 
-.news-item:not(:last-child)::after {
+body.dark .news-item:not(:last-child)::after {
     background: #2a2a3a;
 }
 
-.news-date {
+body.dark .news-date {
     background: #ffd700;
     color: #1a1a2e;
 }
 
-.news-item h3 {
+body.dark .news-item h3 {
     color: #ffd700;
 }
 
-.news-item p {
+body.dark .news-item p {
     color: #b0b0b0;
 }
 
-.read-more {
+body.dark .read-more {
     color: #ffd700;
     border-color: #ffd700;
 }
 
-.read-more:hover {
+body.dark .read-more:hover {
     background: #ffd700;
     color: #1a1a2e;
 }
 
+/* ========== СТРАНИЦА СТАТЬИ (ТЕМНАЯ ТЕМА) ========== */
+body.dark .article-content {
+    background: #16213e;
+    border-color: #2a2a3a;
+}
+
+body.dark .article-title {
+    color: #ffd700;
+}
+
+body.dark .article-text {
+    color: #b0b0b0;
+}
+
+body.dark .article-text h2,
+body.dark .article-text h3 {
+    color: #ffd700;
+}
+
+body.dark .article-text blockquote {
+    border-left-color: #ffd700;
+    color: #aaa;
+}
+
+body.dark .back-button {
+    color: #ffd700;
+    border-color: #ffd700;
+}
+
+body.dark .back-button:hover {
+    background: #ffd700;
+    color: #1a1a2e;
+}
+
+body.dark .article-date {
+    background: #ffd700;
+    color: #1a1a2e;
+}
+/* ========== ДОБАВИТЬ В КОНЕЦ dark-theme.css ========== */
+
+/* Стили для страницы статьи в темной теме */
+body.dark .article-content {
+    background: #16213e;
+    border-color: #2a2a3a;
+}
+
+body.dark .article-title {
+    color: #ffd700;
+}
+
+body.dark .article-text {
+    color: #b0b0b0;
+}
+
+body.dark .article-text h2,
+body.dark .article-text h3 {
+    color: #ffd700;
+}
+
+body.dark .article-text blockquote {
+    border-left-color: #ffd700;
+    color: #aaa;
+}
+
+body.dark .back-button {
+    color: #ffd700;
+    border-color: #ffd700;
+}
+
+body.dark .back-button:hover {
+    background: #ffd700;
+    color: #1a1a2e;
+}
+
+body.dark .article-date {
+    background: #ffd700;
+    color: #1a1a2e;
+}
