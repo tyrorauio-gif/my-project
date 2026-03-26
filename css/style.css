@@ -1,0 +1,641 @@
+/* ========== ОБЩИЕ СТИЛИ ========== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Плавная прокрутка для всей страницы */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+}
+
+/* Общий фон страницы — светлый */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #e9ecef;
+    line-height: 1.6;
+}
+
+/* ========== ШАПКА ========== */
+.header {
+    background: linear-gradient(135deg, #1a2a4f, #0f1a32);
+    color: white;
+    padding: 30px 0;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-top: 3px solid transparent;
+    border-image: linear-gradient(90deg, #ffd700, #ffb347, #ffd700);
+    border-image-slice: 1;
+    width: 100%;
+    margin-bottom: 0;
+}
+
+.header-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.logo h1 {
+    font-size: 32px;
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.logo p {
+    font-size: 16px;
+    opacity: 0.9;
+}
+
+/* Меню навигации */
+.nav-menu {
+    display: flex;
+    gap: 35px;
+    flex-wrap: wrap;
+    align-items: center;
+    flex: 1;
+    justify-content: center;
+}
+
+.nav-menu a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 17px;
+    padding: 8px 12px;
+    transition: all 0.3s;
+    border-radius: 25px;
+}
+
+.nav-menu a:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.theme-toggle {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.theme-toggle:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.05) rotate(15deg);
+}
+
+/* ========== ГЛАВНЫЙ БЛОК С ФОНОВОЙ КАРТИНКОЙ ========== */
+.hero-fullwidth {
+    position: relative;
+    width: 100%;
+    min-height: 550px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
+    margin-top: -2px;
+}
+
+/* Контент внутри блока */
+.hero-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Затемнение УБРАНО — фон прозрачный */
+.hero-fullwidth .hero-overlay {
+    background: transparent;
+    width: 100%;
+    padding: 100px 20px;
+    color: white;
+}
+
+.hero-fullwidth h1 {
+    color: white;
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.hero-fullwidth h1 span {
+    color: #ffd700;
+}
+
+.hero-fullwidth p {
+    font-size: 18px;
+    margin-bottom: 30px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+}
+
+.btn {
+    display: inline-block;
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    color: white;
+    padding: 12px 35px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,123,255,0.4);
+}
+
+/* ========== ОСНОВНОЙ КОНТЕЙНЕР ========== */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ========== СЕТКА ДЛЯ КАРТОЧЕК (МИНИМАЛИСТИЧНАЯ) ========== */
+.section {
+    margin-bottom: 50px;
+    margin-top: 40px;
+}
+
+.section-title {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid #007bff;
+    display: inline-block;
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 20px;
+}
+
+/* НОВЫЙ СТИЛЬ КАРТОЧЕК — квадратные, минималистичные */
+.card {
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 28px;
+    box-shadow: none;
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    border-color: #007bff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.card h3 {
+    color: #007bff;
+    margin-bottom: 15px;
+    font-size: 20px;
+}
+
+.card p {
+    color: #666;
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+.card-link {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-block;
+    margin-top: 5px;
+}
+
+.card-link:hover {
+    text-decoration: underline;
+}
+
+/* ========== ИНФОРМАЦИЯ ОБ УЧИТЕЛЕ (МИНИМАЛИСТИЧНАЯ) ========== */
+.teacher-info {
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 40px;
+    margin-bottom: 40px;
+    box-shadow: none;
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.teacher-info:hover {
+    border-color: #007bff;
+}
+
+.teacher-photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.teacher-photo:hover {
+    transform: scale(1.02);
+}
+
+.teacher-photo::after {
+    content: "🔍";
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 5px 8px;
+    border-radius: 50%;
+    font-size: 14px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+}
+
+.teacher-photo:hover::after {
+    opacity: 1;
+}
+
+.teacher-text {
+    flex: 1;
+}
+
+.teacher-text h2 {
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.teacher-text p {
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.teacher-text ul {
+    margin-top: 15px;
+    margin-left: 20px;
+    color: #666;
+}
+
+.teacher-text li {
+    margin-bottom: 5px;
+}
+
+/* ========== ПОДВАЛ ========== */
+.footer {
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 30px;
+    margin-top: 50px;
+}
+
+.footer p {
+    margin-bottom: 10px;
+}
+
+/* ========== КНОПКА "НАВЕРХ" ========== */
+.scroll-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: #007bff;
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 24px;
+    transition: all 0.3s;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    z-index: 99;
+    cursor: pointer;
+    border: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.scroll-to-top:hover {
+    background: #0056b3;
+    transform: translateY(-3px);
+}
+
+/* Кнопка видна, когда страница прокручена вниз */
+.scroll-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* ========== МОДАЛЬНОЕ ОКНО ДЛЯ ФОТО ========== */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    cursor: pointer;
+}
+
+.modal-content {
+    position: relative;
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    max-height: 90%;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 10px;
+}
+
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1001;
+    transition: color 0.3s;
+}
+
+.modal-close:hover {
+    color: #ffd700;
+}
+
+/* ========== ПЛАВНЫЙ ПЕРЕХОД ДЛЯ ТЕМЫ ========== */
+body,
+.header,
+.teacher-info,
+.card,
+.footer,
+.btn,
+.scroll-to-top,
+.section-title,
+.card h3,
+.card p,
+.teacher-text p {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* ========== АДАПТИВНОСТЬ ДЛЯ ТЕЛЕФОНОВ ========== */
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+    
+    .nav-menu {
+        justify-content: center;
+    }
+    
+    .hero-fullwidth {
+        min-height: 400px;
+    }
+    
+    .hero-fullwidth .hero-overlay {
+        padding: 60px 20px;
+    }
+    
+    .hero-fullwidth h1 {
+        font-size: 28px;
+    }
+    
+    .teacher-info {
+        text-align: center;
+        justify-content: center;
+    }
+    
+    .section-title {
+        font-size: 24px;
+    }
+    
+    .scroll-to-top {
+        bottom: 20px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+    }
+    
+    .modal-close {
+        top: 15px;
+        right: 20px;
+        font-size: 30px;
+    }
+}
+
+/* ========== СТИЛИЗОВАННЫЙ СКРОЛЛБАР ========== */
+
+/* Для Chrome, Safari, Edge */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #e9ecef;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #1a2a4f, #0f1a32);
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    transform: scaleX(1.05);
+}
+
+/* Для Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #1a2a4f #e9ecef;
+}
+
+/* ========== СТИЛИ ДЛЯ НОВОСТНОЙ ЛЕНТЫ ========== */
+
+.news-feed {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 40px;
+    position: relative;
+    padding: 0 30px;
+}
+
+/* Непрерывные боковые линии, выходящие за пределы ленты (такие же, как разделитель) */
+.news-feed::before {
+    content: '';
+    position: absolute;
+    left: -20px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: #e0e0e0;
+}
+
+.news-feed::after {
+    content: '';
+    position: absolute;
+    right: -20px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: #e0e0e0;
+}
+
+.news-item {
+    background: white;
+    padding: 25px 30px;
+    transition: all 0.3s ease;
+    position: relative;
+    border-radius: 8px;
+}
+
+/* Разделительная линия между новостями (не доходит до краев) */
+.news-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 10%;
+    width: 80%;
+    height: 1px;
+    background: #e0e0e0;
+}
+
+.news-item:hover {
+    background: #fafafa;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.news-date {
+    display: inline-block;
+    background: #007bff;
+    color: white;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.news-item h3 {
+    color: #007bff;
+    margin-bottom: 15px;
+    font-size: 22px;
+}
+
+.news-item p {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* Кнопка "Читать далее" */
+.read-more {
+    display: inline-block;
+    background: transparent;
+    color: #007bff;
+    padding: 8px 20px;
+    border: 1px solid #007bff;
+    border-radius: 25px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.read-more:hover {
+    background: #007bff;
+    color: white;
+    transform: translateX(5px);
+}
+
+/* Контейнер для кнопки — выравнивание вправо */
+.news-footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+    .news-feed {
+        padding: 0 15px;
+    }
+    
+    .news-feed::before {
+        left: -10px;
+    }
+    
+    .news-feed::after {
+        right: -10px;
+    }
+    
+    .news-item {
+        padding: 20px;
+    }
+    
+    .news-item:not(:last-child)::after {
+        width: 90%;
+        left: 5%;
+        bottom: -12px;
+    }
+    
+    .read-more {
+        padding: 6px 16px;
+        font-size: 13px;
+    }
+}

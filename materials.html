@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Материалы | Личный сайт учителя</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- ШАПКА (такая же как на главной) -->
+    <div id="top" class="header">
+        <div class="header-content">
+            <div class="nav-menu">
+                <a href="index.html">Главная</a>
+                <a href="materials.html">Материалы</a>
+                <a href="news.html">Новости</a>
+                <a href="contacts.html">Контакты</a>
+                <button id="themeToggle" class="theme-toggle">🌙</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- КОНТЕНТ СТРАНИЦЫ МАТЕРИАЛЫ -->
+    <div class="container">
+        <h1 class="section-title" style="margin-top: 40px;">📚 Полезные материалы</h1>
+        
+        <div class="cards-grid">
+            <div class="card">
+                <h3>Подготовка к ЕГЭ</h3>
+                <p>Сборник заданий, разбор сложных тем, рекомендации по подготовке к экзамену.</p>
+                <a href="#" class="card-link">Скачать PDF →</a>
+            </div>
+            <div class="card">
+                <h3>Высшая математика. 5-9 класс</h3>
+                <p>Правила, упражнения, тесты для закрепления материала.</p>
+                <a href="#" class="card-link">Смотреть →</a>
+            </div>
+            <div class="card">
+                <h3>Курсы. Список тестов</h3>
+                <p>Список заданий для внеклассной работы по классам.</p>
+                <a href="#" class="card-link">Открыть →</a>
+            </div>
+            <div class="card">
+                <h3>Видеоуроки по высшей математике</h3>
+                <p>Подборка лучших видеоуроков для самостоятельного изучения.</p>
+                <a href="#" class="card-link">Смотреть →</a>
+            </div>
+            <div class="card">
+                <h3>Тренажеры для подготовки</h3>
+                <p>Интерактивные тренажеры для отработки навыков.</p>
+                <a href="#" class="card-link">Перейти →</a>
+            </div>
+            <div class="card">
+                <h3>Методические пособия</h3>
+                <p>Рекомендации для учителей и родителей.</p>
+                <a href="#" class="card-link">Скачать →</a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- ПОДВАЛ -->
+    <div class="footer">
+        <p>© 2026 Личный сайт много уважаемого учителя Хамидуллин Альберт Фирдавесович</p>
+        <p>Все права защищены</p>
+    </div>
+    
+    <!-- КНОПКА "НАВЕРХ" -->
+    <button id="scrollToTopBtn" class="scroll-to-top" title="Наверх">↑</button>
+    
+    <!-- МОДАЛЬНОЕ ОКНО -->
+    <div id="photoModal" class="modal" onclick="closeModal()">
+        <span class="modal-close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+    
+    <!-- ПОДКЛЮЧАЕМ ОБЩИЙ JS ФАЙЛ -->
+    <script src="js/common.js"></script>
+</body>
+</html>

@@ -1,0 +1,148 @@
+/* ========== ТЕМНАЯ ТЕМА ========== */
+
+/* Общий фон страницы — темный */
+body {
+    background-color: #1a1a2e;
+}
+
+/* Белые блоки становятся темными с тонкой обводкой */
+.teacher-info,
+.card {
+    background: #16213e;
+    border: 1px solid #2a2a3a;
+}
+
+.teacher-info:hover,
+.card:hover {
+    border-color: #ffd700;
+}
+
+/* Убираем затемнение в главном блоке с фоном */
+.hero-fullwidth .hero-overlay {
+    background: transparent;
+}
+
+/* Текст в блоках */
+.teacher-text h2,
+.section-title,
+.card h3 {
+    color: #e0e0e0;
+}
+
+.teacher-text p,
+.teacher-text li,
+.card p {
+    color: #b0b0b0;
+}
+
+/* Заголовки разделов */
+.section-title {
+    color: #ffffff;
+    border-bottom-color: #ffd700;
+}
+
+/* Карточки */
+.card {
+    box-shadow: none;
+}
+
+.card:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.card h3 {
+    color: #ffd700;
+}
+
+.card-link {
+    color: #ffd700;
+}
+
+/* Кнопка "Написать" в темной теме */
+.btn {
+    background: linear-gradient(135deg, #ffd700, #ffb347);
+    color: #1a1a2e;
+}
+
+.btn:hover {
+    box-shadow: 0 5px 15px rgba(255,215,0,0.4);
+}
+
+/* Шапка в темной теме */
+.header {
+    background: linear-gradient(135deg, #0f0f1a, #1a1a2e);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+/* Подвал в темной теме */
+.footer {
+    background: #0a0a14;
+}
+
+/* Кнопка "Наверх" в темной теме */
+.scroll-to-top {
+    background: #ffd700;
+    color: #1a1a2e;
+}
+
+.scroll-to-top:hover {
+    background: #ffb347;
+}
+
+/* Модальное окно */
+.modal {
+    background-color: rgba(0, 0, 0, 0.95);
+}
+
+/* Адаптивность для темной темы */
+@media (max-width: 768px) {
+    .teacher-info,
+    .card {
+        background: #16213e;
+    }
+}
+
+/* ========== СТИЛИ ДЛЯ НОВОСТНОЙ ЛЕНТЫ (ТЕМНАЯ ТЕМА) ========== */
+
+.news-feed::before,
+.news-feed::after {
+    background: #2a2a3a;
+}
+
+.news-item {
+    background: #16213e;
+}
+
+.news-item:hover {
+    background: #1a1a2e;
+}
+
+.news-item:not(:last-child)::after {
+    background: #2a2a3a;
+}
+
+.news-date {
+    background: #ffd700;
+    color: #1a1a2e;
+}
+
+.news-item h3 {
+    color: #ffd700;
+}
+
+.news-item p {
+    color: #b0b0b0;
+}
+
+.read-more {
+    color: #ffd700;
+    border-color: #ffd700;
+}
+
+.read-more:hover {
+    background: #ffd700;
+    color: #1a1a2e;
+}
+
