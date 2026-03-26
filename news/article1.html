@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>С днем рождения! | Новости</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <!-- ШАПКА -->
+    <div id="top" class="header">
+        <div class="header-content">
+            <div class="nav-menu">
+                <a href="../index.html">Главная</a>
+                <a href="../materials.html">Материалы</a>
+                <a href="../news.html">Новости</a>
+                <a href="../contacts.html">Контакты</a>
+                <button id="themeToggle" class="theme-toggle">🌙</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="article-content">
+            <div class="article-date">🎉 26 марта 2026</div>
+            <h1 class="article-title">С днем рождения! 🎂</h1>
+            <div class="article-text">
+                <p>Сегодня замечательный праздник и лучший день на свете, а именно мой день рождения! 🎉</p>
+                <p>Я приглашаю всех желающих на праздничные лекции. В программе:</p>
+                <ul>
+                    <li>📚 Разбор сложных задач с улыбкой</li>
+                    <li>🧩 Математические загадки с призами</li>
+                    <li>🍰 Чаепитие с тортом</li>
+                    <li>🎁 Розыгрыш полезных материалов</li>
+                </ul>
+                <p>Приходите с хорошим настроением! Те, кто придет с коньяком или текилой, на лекции допущен не будет 😊</p>
+                <blockquote>
+                    "Математика — это не просто формулы, это искусство мыслить!"
+                </blockquote>
+                <p><strong>Где и когда:</strong> Кабинет №444, начало в 15:00. Продолжительность — 2 часа.</p>
+                <p>Жду вас! 🚀</p>
+            </div>
+            <div class="article-footer">
+                <a href="../news.html" class="back-button">← Назад к новостям</a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- ПОДВАЛ -->
+    <div class="footer">
+        <p>© 2026 Личный сайт учителя Хамидуллина Альберта Фирдавесовича</p>
+        <p>Все права защищены</p>
+    </div>
+    
+    <button id="scrollToTopBtn" class="scroll-to-top" title="Наверх">↑</button>
+    <div id="photoModal" class="modal" onclick="closeModal()">
+        <span class="modal-close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+    
+    <script src="../js/common.js"></script>
+    <script>
+        function updateBodyThemeClass() {
+            const isDark = document.querySelector('link[href="../css/dark-theme.css"]') !== null;
+            if (isDark) {
+                document.body.classList.add('dark');
+            } else {
+                document.body.classList.remove('dark');
+            }
+        }
+        
+        const observer = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+                if (mutation.type === 'childList') {
+                    updateBodyThemeClass();
+                }
+            });
+        });
+        
+        observer.observe(document.head, { childList: true, subtree: true });
+        updateBodyThemeClass();
+        
+        const themeToggleBtn = document.getElementById('themeToggle');
+        if (themeToggleBtn) {
+            themeToggleBtn.addEventListener('click', function() {
+                setTimeout(updateBodyThemeClass, 50);
+            });
+        }
+    </script>
+</body>
+</html>
