@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>С днем рождения! | Новости</title>
+    <title>С днем рождения! | Личный сайт учителя</title>
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
@@ -12,42 +12,50 @@
             <div class="nav-menu">
                 <a href="../index.html">Главная</a>
                 <a href="../materials.html">Материалы</a>
-                <a href="../news.html">Новости</a>
+                <a href="../news.html" class="active">Новости</a>
                 <a href="../contacts.html">Контакты</a>
             </div>
         </div>
     </div>
     
-    <div class="article-container">
-        <div class="article-header">
-            <span class="article-meta">25 марта 2026</span>
-            <h1 class="article-title">С днем рождения! 🎂</h1>
-            <div class="article-subtitle">Праздничная лекция и приятные сюрпризы для учеников</div>
+    <div class="article-layout">
+        <div class="article-main">
+            <div class="article-header">
+                <span class="article-meta">25 марта 2026</span>
+                <h1 class="article-title">С днем рождения! 🎂</h1>
+                <div class="article-subtitle">Праздничная лекция и приятные сюрпризы для учеников</div>
+            </div>
+            
+            <div class="article-body">
+                <img src="../images/news-birthday.jpg" alt="День рождения" class="article-image" onclick="openModal(this)">
+                
+                <p>Сегодня замечательный праздник и лучший день на свете, а именно мой день рождения! 🎉</p>
+                
+                <p>Я приглашаю всех желающих на праздничные лекции. В программе:</p>
+                <ul>
+                    <li>Разбор сложных задач с улыбкой</li>
+                    <li>Математические загадки с призами</li>
+                    <li>Чаепитие с тортом</li>
+                    <li>Розыгрыш полезных материалов</li>
+                </ul>
+                
+                <p>Приходите с хорошим настроением! Те, кто придет с коньяком или текилой, на лекции допущен не будет 😊</p>
+                
+                <blockquote>
+                    "Математика — это не просто формулы, это искусство мыслить!"
+                </blockquote>
+                
+                <p><strong>Где и когда:</strong> Кабинет №444, начало в 15:00. Продолжительность — 2 часа.</p>
+                
+                <p>Жду вас! 🚀</p>
+            </div>
+            
+            <a href="../news.html" class="back-button">← Назад к новостям</a>
         </div>
         
-        <div class="article-body">
-            <p>Сегодня замечательный праздник и лучший день на свете, а именно мой день рождения! 🎉</p>
-            
-            <p>Я приглашаю всех желающих на праздничные лекции. В программе:</p>
-            <ul>
-                <li>Разбор сложных задач с улыбкой</li>
-                <li>Математические загадки с призами</li>
-                <li>Чаепитие с тортом</li>
-                <li>Розыгрыш полезных материалов</li>
-            </ul>
-            
-            <p>Приходите с хорошим настроением! Те, кто придет с коньяком или текилой, на лекции допущен не будет 😊</p>
-            
-            <blockquote>
-                "Математика — это не просто формулы, это искусство мыслить!"
-            </blockquote>
-            
-            <p><strong>Где и когда:</strong> Кабинет №444, начало в 15:00. Продолжительность — 2 часа.</p>
-            
-            <p>Жду вас! 🚀</p>
+        <div class="article-sidebar">
+            <div id="popular-container" class="popular-container"></div>
         </div>
-        
-        <a href="../news.html" class="back-button">← Назад к новостям</a>
     </div>
     
     <div class="footer">
@@ -64,5 +72,7 @@
     </div>
     
     <script src="../js/common.js"></script>
+    <script src="../js/github-pages-fix.js"></script>
+    <script src="../js/popular-posts.js"></script>
 </body>
 </html>
