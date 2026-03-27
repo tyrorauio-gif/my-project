@@ -862,3 +862,32 @@ body {
         padding-top: 0;
     }
 }
+/* ========== СТИЛИ ДЛЯ КНОПОК СКАЧИВАНИЯ ========== */
+.download-link {
+    display: inline-block;
+    background: #2c3e50;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s;
+    margin: 0 20px 25px;
+}
+
+.download-link:hover {
+    background: #1e2a3a;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Стили для темной темы */
+body.dark .download-link {
+    background: #ffffff;
+    color: #1a2332;
+}
+
+body.dark .download-link:hover {
+    background: #e0e0e0;
+}

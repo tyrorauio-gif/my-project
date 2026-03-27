@@ -201,22 +201,142 @@ if (themeToggle) {
     });
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-    setActiveNavLink();
+// ========== УНИВЕРСАЛЬНЫЕ КНОПКИ ОТКРЫТИЯ PDF ==========
+function openPDFInNewWindow(url) {
+    console.log('📄 Открываю PDF:', url);
+    // Открываем PDF в новой вкладке/окне
+    window.open(url, '_blank');
+}
+
+function checkLocalFileAndOpen(localPath, onlineUrl) {
+    console.log('🔍 Проверка локального файла:', localPath);
     
-    // Добавляем обработчики для изображений с классом card-image
+    // Получаем полный URL относительно текущей страницы
+    let fullLocalPath = localPath;
+    
+    // Если путь начинается с /, убираем его для относительного пути
+    if (fullLocalPath.startsWith('/')) {
+        fullLocalPath = fullLocalPath.substring(1);
+    }
+    
+    console.log('📁 Полный путь для проверки:', fullLocalPath);
+    
+    // Добавляем случайный параметр, чтобы избежать кэширования при проверке
+    const checkUrl = fullLocalPath + '?t=' + Date.now();
+    
+    fetch(checkUrl, { 
+        method: 'HEAD',
+        cache: 'no-cache',
+        mode: 'no-cors' // Добавляем no-cors для обхода CORS
+    })
+    .then(response => {
+        console.log('✅ Статус ответа:', response.status);
+        // При no-cors response.status всегда 0, но это нормально
+        // Мы не можем точно определить статус, но если fetch выполнился без ошибки,
+        // значит файл существует (или сервер вернул что-то)
+        console.log('✅ Локальный файл, вероятно, существует! Открываю:', fullLocalPath);
+        openPDFInNewWindow(fullLocalPath);
+    })
+    .catch(error => {
+        console.error('❌ Ошибка при проверке локального файла:', error);
+        // Если произошла ошибка, файл скорее всего не существует
+        console.log('❌ Локальный файл не найден, использую онлайн-ссылку');
+        useOnlineFallback(onlineUrl, localPath);
+    });
+    
+    // Устанавливаем таймаут на случай, если fetch зависнет
+    setTimeout(() => {
+        console.log('⏰ Таймаут проверки локального файла');
+        useOnlineFallback(onlineUrl, localPath);
+    }, 3000);
+}
+
+function useOnlineFallback(onlineUrl, localPath) {
+    if (onlineUrl && onlineUrl !== '' && onlineUrl !== '#' && onlineUrl !== '.pdf') {
+        console.log('🌐 Использую онлайн-ссылку:', onlineUrl);
+        openPDFInNewWindow(onlineUrl);
+    } else {
+        console.error('❌ Нет доступной онлайн-ссылки для:', localPath);
+        alert('Файл временно недоступен. Пожалуйста, попробуйте позже или обратитесь к администратору.');
+    }
+}
+
+function initDownloadLinks() {
+    console.log('🚀 Инициализация PDF-кнопок...');
+    const downloadLinks = document.querySelectorAll('.download-link');
+    console.log('📊 Найдено кнопок:', downloadLinks.length);
+    
+    if (downloadLinks.length === 0) {
+        console.warn('⚠️ Не найдено кнопок с классом .download-link');
+        return;
+    }
+    
+    downloadLinks.forEach((link, index) => {
+        // Убираем старые обработчики, клонируя элемент
+        const newLink = link.cloneNode(true);
+        link.parentNode.replaceChild(newLink, link);
+        
+        newLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            const localPath = this.getAttribute('data-local');
+            const onlineUrl = this.getAttribute('data-online');
+            
+            console.log(`\n=== Обработка клика (кнопка ${index + 1}) ===`);
+            console.log('📁 Локальный путь:', localPath);
+            console.log('🌐 Онлайн ссылка:', onlineUrl);
+            
+            // Если нет data-local и data-online, значит это обычная ссылка
+            if (!localPath && (!onlineUrl || onlineUrl === '#')) {
+                const href = this.getAttribute('href');
+                if (href && href !== '#') {
+                    window.location.href = href;
+                }
+                return;
+            }
+            
+            // Проверяем локальный файл (если указан)
+            if (localPath && localPath !== '' && localPath !== '#') {
+                checkLocalFileAndOpen(localPath, onlineUrl);
+            } 
+            // Если только онлайн-ссылка
+            else if (onlineUrl && onlineUrl !== '' && onlineUrl !== '#' && onlineUrl !== '.pdf') {
+                console.log('🌐 Только онлайн-ссылка, открываем...');
+                openPDFInNewWindow(onlineUrl);
+            } 
+            else {
+                alert('Нет доступного источника для открытия файла');
+            }
+        });
+    });
+    
+    console.log('✅ Инициализация PDF-кнопок завершена');
+}
+
+// ========== ИНИЦИАЛИЗАЦИЯ ВСЕХ ФУНКЦИЙ ==========
+function initAll() {
+    console.log('🚀 Инициализация страницы...');
+    setActiveNavLink();
+    initDownloadLinks();
+    
+    // Обработчики для изображений в карточках
     const cardImages = document.querySelectorAll('.card-image img');
+    console.log('🖼️ Найдено изображений в карточках:', cardImages.length);
     cardImages.forEach(img => {
         img.style.cursor = 'pointer';
-        img.addEventListener('click', function() {
+        img.addEventListener('click', function(e) {
+            e.stopPropagation();
             openModal(this);
         });
     });
     
-    // Добавляем обработчики для новостных изображений
+    // Обработчики для новостных изображений
     const newsImages = document.querySelectorAll('.news-image');
+    console.log('📰 Найдено новостных изображений:', newsImages.length);
     newsImages.forEach(img => {
-        img.addEventListener('click', function() {
+        img.addEventListener('click', function(e) {
+            e.stopPropagation();
             const modalImg = document.getElementById('modalImage');
             if (modalImg) {
                 modalImg.src = this.style.backgroundImage.slice(5, -2);
@@ -224,4 +344,13 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-});
+    
+    console.log('✅ Инициализация страницы завершена');
+}
+
+// Запускаем инициализацию после полной загрузки DOM
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAll);
+} else {
+    initAll();
+}
