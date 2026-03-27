@@ -28,7 +28,8 @@ body.dark .nav-menu a.active {
 
 body.dark .teacher-info,
 body.dark .card,
-body.dark .news-card {
+body.dark .news-card,
+body.dark .card-horizontal {
     background: #1a2332;
     border: 1px solid #2a3343;
     box-shadow: none;
@@ -36,27 +37,29 @@ body.dark .news-card {
 
 body.dark .teacher-info:hover,
 body.dark .card:hover,
-body.dark .news-card:hover {
+body.dark .news-card:hover,
+body.dark .card-horizontal:hover {
     border-color: #ffffff;
     box-shadow: 0 10px 25px rgba(0,0,0,0.2);
 }
 
-/* Стили для изображений в карточках в темной теме */
 body.dark .card-image,
-body.dark .news-card-image {
+body.dark .news-card-image,
+body.dark .card-horizontal .card-image {
     background-color: #2a3343;
 }
 
 body.dark .card-image img,
-body.dark .news-card-image {
+body.dark .news-card-image,
+body.dark .card-horizontal .card-image img {
     opacity: 0.95;
 }
 
-/* ВСЕ ЗАГОЛОВКИ — БЕЛЫЕ */
 body.dark .teacher-text h2,
 body.dark .section-title,
 body.dark .card h3,
 body.dark .news-card h3,
+body.dark .card-horizontal h3,
 body.dark .news-title-main,
 body.dark .article-title,
 body.dark .sidebar-title,
@@ -66,11 +69,11 @@ body.dark .article-body h3 {
     color: #ffffff;
 }
 
-/* ВЕСЬ ТЕКСТ — БЕЛЫЙ */
 body.dark .teacher-text p,
 body.dark .teacher-text li,
 body.dark .card p,
 body.dark .news-card p,
+body.dark .card-horizontal p,
 body.dark .news-excerpt,
 body.dark .article-body,
 body.dark .article-body p,
@@ -87,12 +90,14 @@ body.dark .section-title {
 }
 
 body.dark .card-link,
-body.dark .news-card-link {
+body.dark .news-card-link,
+body.dark .card-horizontal .card-link {
     color: #ffffff;
 }
 
 body.dark .card-link:hover,
 body.dark .news-card-link:hover,
+body.dark .card-horizontal .card-link:hover,
 body.dark .popular-title:hover {
     color: #cccccc;
     text-decoration: underline;
@@ -173,63 +178,66 @@ body.dark * {
 
 /* ========== СТИЛИ ДЛЯ ПОПУЛЯРНОГО В ТЕМНОЙ ТЕМЕ ========== */
 body.dark .sidebar-title {
-    border-bottom: 2px solid #ffffff;  /* ← БЕЛАЯ ЛИНИЯ ПОД ЗАГОЛОВКОМ */
+    border-bottom: 2px solid #ffffff;
 }
 
 body.dark .popular-list li {
-    border-bottom-color: #2a3343;  /* ← ТЕМНАЯ ЛИНИЯ МЕЖДУ СТАТЬЯМИ */
+    border-bottom-color: #2a3343;
 }
 
-body.dark .article-body blockquote {
-    border-left-color: #ffffff;
-    color: #ffffff;
+/* ========== СТИЛИ ДЛЯ ГОРИЗОНТАЛЬНОЙ ПРОКРУТКИ В ТЕМНОЙ ТЕМЕ ========== */
+body.dark .cards-scroll::-webkit-scrollbar-track {
+    background: #2a3343;
 }
 
-body.dark .article-body strong {
-    color: #ffffff;
+body.dark .cards-scroll::-webkit-scrollbar-thumb {
+    background: #ffffff;
 }
 
-body.dark .article-meta,
-body.dark .news-date-main {
-    background: transparent;
-    padding: 0;
-    color: #ffffff;
+body.dark .cards-scroll::-webkit-scrollbar-thumb:hover {
+    background: #e0e0e0;
 }
 
-body.dark .teacher-text ul {
-    color: #ffffff;
-}
-
-body.dark .teacher-text li {
-    color: #ffffff;
-}
-
-/* Стили для фото в темной теме */
-body.dark .news-image {
-    background-color: #2a3343;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-}
-
-body.dark .news-image:hover {
-    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-}
-
-/* Стили для кнопок скачивания PDF в темной теме */
-body.dark .download-link {
+body.dark .scroll-btn {
     background: #ffffff;
     color: #1a2332;
-    transition: all 0.3s;
 }
 
-body.dark .download-link:hover {
+body.dark .scroll-btn:hover {
     background: #e0e0e0;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    /* Убираем изменение цвета текста */
-    color: #1a2332;
 }
 
-body.dark .download-link:active,
-body.dark .download-link:focus {
-    color: #1a2332;
+body.dark .section-divider {
+    background: linear-gradient(90deg, transparent, #ffffff, transparent);
+}
+
+/* Горизонтальный скроллбар в тёмной теме */
+body.dark .cards-scroll::-webkit-scrollbar-track {
+    background: #2a3343;
+}
+body.dark .cards-scroll::-webkit-scrollbar-thumb {
+    background: #ffffff;
+}
+body.dark .cards-scroll::-webkit-scrollbar-thumb:hover {
+    background: #e0e0e0;
+}
+
+body.dark .card-horizontal {
+    background: #1a2332;
+    border: 1px solid #2a3343;
+}
+body.dark .card-horizontal:hover {
+    border-color: #ffffff;
+}
+body.dark .card-horizontal h3 {
+    color: #ffffff;
+}
+body.dark .card-horizontal p {
+    color: #ffffff;
+}
+body.dark .card-horizontal .card-link {
+    color: #ffffff;
+}
+body.dark .card-horizontal .card-link:hover {
+    color: #cccccc;
 }
