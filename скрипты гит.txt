@@ -1,4 +1,0 @@
-git status
-git add contacts.html css/dark-theme.css css/style.css index.html js/common.js materials.html news.html news/article1.html news/article3.html news/article2.html  news/article4.html news/template.html images/ege.jpg images/math.jpg images/news-birthday.jpg images/news-exam.jpg images/news-olympiad.jpg  images/news-video.jpg images/tests.jpg  images/video.jpg
-git commit -m
-git push
