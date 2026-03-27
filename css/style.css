@@ -347,14 +347,29 @@ body {
     margin-top: 40px;
     width: 100%;
     margin-bottom: 80px;
+    position: relative;
+}
+
+/* Разделительная линия между новостями и сайдбаром */
+.news-layout::before {
+    content: '';
+    position: absolute;
+    left: 66.666%;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, #2c3e50, transparent);
+    opacity: 0.3;
 }
 
 .news-main {
     flex: 2;
+    padding-right: 30px;
 }
 
 .news-sidebar {
     flex: 1;
+    padding-left: 30px;
 }
 
 .sidebar-title {
@@ -483,12 +498,37 @@ body {
     transform: translateX(5px);
 }
 
-/* ========== СТИЛИ ДЛЯ СТАТЬИ ========== */
-.article-container {
-    width: 100%;
-    max-width: none;
+/* ========== СТИЛИ ДЛЯ СТАТЬИ С САЙДБАРОМ ========== */
+.article-layout {
+    display: flex;
+    gap: 50px;
     margin: 40px auto;
     padding: 0 1.5cm;
+    width: 100%;
+    max-width: none;
+    position: relative;
+}
+
+/* Разделительная линия между статьей и сайдбаром */
+.article-layout::before {
+    content: '';
+    position: absolute;
+    left: 66.666%;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, #2c3e50, transparent);
+    opacity: 0.3;
+}
+
+.article-main {
+    flex: 2;
+    padding-right: 30px;
+}
+
+.article-sidebar {
+    flex: 1;
+    padding-left: 30px;
 }
 
 .article-header {
@@ -562,6 +602,19 @@ body {
     color: #2c3e50;
 }
 
+.article-image {
+    width: 100%;
+    max-width: 800px;
+    border-radius: 12px;
+    margin: 20px 0;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.article-image:hover {
+    transform: scale(1.02);
+}
+
 .back-button {
     display: inline-block;
     margin-top: 40px;
@@ -617,18 +670,17 @@ body {
     border: none;
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease, background 0.3s;
     font-weight: bold;
-}
-
-.scroll-to-top:hover {
-    background: #1e2a3a;
-    transform: translateY(-3px);
 }
 
 .scroll-to-top.show {
     opacity: 1;
     visibility: visible;
+}
+
+.scroll-to-top:hover {
+    background: #1e2a3a;
+    transform: translateY(-3px);
 }
 
 .theme-toggle-fixed {
@@ -748,8 +800,46 @@ body {
         padding: 0 1cm;
     }
     
-    .article-container {
+    .article-layout {
+        flex-direction: column;
         padding: 0 1cm;
+        gap: 30px;
+    }
+    
+    .article-layout::before {
+        display: none;
+    }
+    
+    .article-main {
+        padding-right: 0;
+    }
+    
+    .article-sidebar {
+        padding-left: 0;
+        border-top: 1px solid #e9ecef;
+        padding-top: 30px;
+        margin-top: 20px;
+    }
+    
+    .news-layout {
+        flex-direction: column;
+        gap: 30px;
+        margin-bottom: 100px;
+    }
+    
+    .news-layout::before {
+        display: none;
+    }
+    
+    .news-main {
+        padding-right: 0;
+    }
+    
+    .news-sidebar {
+        padding-left: 0;
+        border-top: 1px solid #e9ecef;
+        padding-top: 30px;
+        margin-top: 20px;
     }
     
     .header-content {
@@ -788,12 +878,6 @@ body {
         top: 15px;
         right: 20px;
         font-size: 30px;
-    }
-    
-    .news-layout {
-        flex-direction: column;
-        gap: 30px;
-        margin-bottom: 100px;
     }
     
     .news-item-main {
@@ -862,6 +946,7 @@ body {
         padding-top: 0;
     }
 }
+
 /* ========== СТИЛИ ДЛЯ КНОПОК СКАЧИВАНИЯ ========== */
 .download-link {
     display: inline-block;
