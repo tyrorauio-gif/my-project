@@ -1,7 +1,8 @@
 // ========== ГОРИЗОНТАЛЬНАЯ ПРОКРУТКА ==========
-(function() {
-    // Встроенные данные (всегда работают)
-    const materialsData = [
+(function () {
+
+    // ===== FALLBACK ДАННЫЕ =====
+    const fallbackMaterials = [
         {
             image: "images/ege.jpg",
             title: "Подготовка к ЕГЭ",
@@ -28,33 +29,46 @@
         }
     ];
 
-    const newsData = [
+    const fallbackNews = [
         {
             image: "images/news-birthday.jpg",
             title: "26 марта",
-            description: "Сегодня замечательный праздник и лучший день на свете, а именно мой день рождения! Приходите с коньяком и конфетами на мои лекции...",
+            description: "Сегодня замечательный праздник и лучший день на свете!",
             link: "news/article1.html"
         },
         {
             image: "images/news-exam.jpg",
             title: "20 марта",
-            description: "Обновлен список материалов для подготовки к ЕГЭ. Новые задания и видеоуроки уже доступны в разделе 'Полезные материалы'.",
+            description: "Обновлен список материалов для подготовки к ЕГЭ.",
             link: "news/article2.html"
         },
         {
             image: "images/news-olympiad.jpg",
             title: "15 марта",
-            description: "Поздравляем призеров городской олимпиады по высшей математике! Молодцы! Так держать!",
+            description: "Поздравляем призеров городской олимпиады!",
             link: "news/article3.html"
         },
         {
             image: "images/news-video.jpg",
             title: "10 апреля",
-            description: "Вышел новый видеоурок, в котором подробно разбираются методы интегрирования и решение задач из ЕГЭ...",
+            description: "Новый видеоурок по интегралам.",
             link: "news/article4.html"
         }
     ];
 
+    // ===== ЗАГРУЗКА HTML =====
+    async function fetchPage(url) {
+        try {
+            const response = await fetch(url);
+            if (!response.ok) throw new Error();
+            return await response.text();
+        } catch (e) {
+            console.warn(`⚠️ Не удалось загрузить ${url}`);
+            return null;
+        }
+    }
+
+    // ===== СОЗДАНИЕ КАРТОЧКИ =====
     function createCard(item) {
         return `
             <div class="card-horizontal">
@@ -68,32 +82,82 @@
         `;
     }
 
-    function loadAndDisplay() {
-        console.log('🚀 Загрузка данных...');
-        
-        // Материалы
-        const materialsScroll = document.getElementById('materials-scroll');
-        if (materialsScroll) {
-            materialsScroll.innerHTML = materialsData.slice(0, 3).map(createCard).join('');
-            console.log('📚 Материалы отображены');
-        } else {
-            console.error('❌ Контейнер materials-scroll не найден');
+    // ===== ПАРСИНГ МАТЕРИАЛОВ =====
+    function parseMaterials(html) {
+        const doc = new DOMParser().parseFromString(html, 'text/html');
+
+        return [...doc.querySelectorAll('[data-material-id]')].map(card => ({
+            image: card.querySelector('[data-material-image]')?.src || '',
+            title: card.querySelector('[data-material-title]')?.textContent.trim() || '',
+            description: card.querySelector('[data-material-desc]')?.textContent.trim() || '',
+            link: "materials.html"
+        }));
+    }
+
+    // ===== ПАРСИНГ НОВОСТЕЙ =====
+    function parseNews(html) {
+        const doc = new DOMParser().parseFromString(html, 'text/html');
+
+        return [...doc.querySelectorAll('[data-news-id]')].map(item => {
+            const bg = item.querySelector('[data-news-image]')?.style.backgroundImage;
+            const image = bg ? bg.slice(5, -2) : '';
+
+            return {
+                image,
+                title: item.querySelector('[data-news-title]')?.textContent.trim() || '',
+                description: item.querySelector('[data-news-desc]')?.textContent.trim() || '',
+                link: item.querySelector('[data-news-link]')?.getAttribute('href') || '#'
+            };
+        });
+    }
+
+    // ===== ОСНОВНАЯ ФУНКЦИЯ =====
+    async function init() {
+        console.log("🚀 Загрузка данных...");
+
+        let materials = [];
+        let news = [];
+
+        // --- МАТЕРИАЛЫ ---
+        const materialsHtml = await fetchPage('materials.html');
+        if (materialsHtml) {
+            materials = parseMaterials(materialsHtml);
         }
-        
-        // Новости
-        const newsScroll = document.getElementById('news-scroll');
-        if (newsScroll) {
-            newsScroll.innerHTML = newsData.slice(0, 3).map(createCard).join('');
-            console.log('📰 Новости отображены');
+        if (!materials.length) {
+            console.warn("⚠️ Используем fallback материалы");
+            materials = fallbackMaterials;
+        }
+
+        // --- НОВОСТИ ---
+        const newsHtml = await fetchPage('news.html');
+        if (newsHtml) {
+            news = parseNews(newsHtml);
+        }
+        if (!news.length) {
+            console.warn("⚠️ Используем fallback новости");
+            news = fallbackNews;
+        }
+
+        // --- ВСТАВКА ---
+        const materialsContainer = document.getElementById('materials-scroll');
+        const newsContainer = document.getElementById('news-scroll');
+
+        if (materialsContainer) {
+            materialsContainer.innerHTML = materials.map(createCard).join('');
+            console.log("📚 Материалы загружены");
         } else {
-            console.error('❌ Контейнер news-scroll не найден');
+            console.error("❌ materials-scroll не найден");
+        }
+
+        if (newsContainer) {
+            newsContainer.innerHTML = news.map(createCard).join('');
+            console.log("📰 Новости загружены");
+        } else {
+            console.error("❌ news-scroll не найден");
         }
     }
 
-    // Запускаем после загрузки DOM
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', loadAndDisplay);
-    } else {
-        loadAndDisplay();
-    }
+    // ===== ЗАПУСК =====
+    document.addEventListener('DOMContentLoaded', init);
+
 })();
