@@ -11,7 +11,7 @@
         <div class="header-content">
             <div class="nav-menu">
                 <a href="index.html">Главная</a>
-                <a href="materials.html">Материалы</a>
+                <a href="materials.html" class="active">Материалы</a>
                 <a href="news.html">Новости</a>
                 <a href="contacts.html">Контакты</a>
             </div>
@@ -19,28 +19,47 @@
     </div>
     
     <div class="container">
-        <h1 class="section-title" style="margin-top: 40px;">📚 Полезные материалы</h1>
+        <h1 class="section-title" style="margin-top: 40px;">Полезные материалы</h1>
         
         <div class="cards-grid">
+            <!-- Карточка 1 - Подготовка к ЕГЭ -->
             <div class="card">
+                <div class="card-image">
+                    <img src="images/ege.jpg" alt="Подготовка к ЕГЭ">
+                </div>
                 <h3>Подготовка к ЕГЭ</h3>
                 <p>Сборник заданий, разбор сложных тем, рекомендации по подготовке к экзамену.</p>
-                <a href="#" class="card-link">Скачать PDF →</a>
+                <a href="#" class="card-link">Подробнее →</a>
             </div>
+            
+            <!-- Карточка 2 - Высшая математика -->
             <div class="card">
+                <div class="card-image">
+                    <img src="images/math.jpg" alt="Высшая математика">
+                </div>
                 <h3>Высшая математика. 5-9 класс</h3>
                 <p>Правила, упражнения, тесты для закрепления материала.</p>
-                <a href="#" class="card-link">Смотреть →</a>
+                <a href="#" class="card-link">Подробнее →</a>
             </div>
+            
+            <!-- Карточка 3 - Курсы. Список тестов -->
             <div class="card">
+                <div class="card-image">
+                    <img src="images/tests.jpg" alt="Курсы и тесты">
+                </div>
                 <h3>Курсы. Список тестов</h3>
                 <p>Список заданий для внеклассной работы по классам.</p>
-                <a href="#" class="card-link">Открыть →</a>
+                <a href="#" class="card-link">Подробнее →</a>
             </div>
+            
+            <!-- Карточка 4 - Видеоуроки -->
             <div class="card">
+                <div class="card-image">
+                    <img src="images/video.jpg" alt="Видеоуроки">
+                </div>
                 <h3>Видеоуроки</h3>
                 <p>Подборка лучших видеоуроков для самостоятельного изучения.</p>
-                <a href="#" class="card-link">Смотреть →</a>
+                <a href="#" class="card-link">Подробнее →</a>
             </div>
         </div>
     </div>
@@ -50,11 +69,8 @@
         <p>Все права защищены</p>
     </div>
     
-    <!-- КНОПКА ТЕМЫ (фиксированная) -->
-    <button id="themeToggle" class="theme-toggle-fixed" aria-label="Переключить тему">🌙</button>
-    
-    <!-- КНОПКА "НАВЕРХ" -->
-    <button id="scrollToTopBtn" class="scroll-to-top" title="Наверх">↑</button>
+    <button id="themeToggle" class="theme-toggle-fixed">🌙</button>
+    <button id="scrollToTopBtn" class="scroll-to-top">↑</button>
     
     <div id="photoModal" class="modal" onclick="closeModal()">
         <span class="modal-close" onclick="closeModal()">&times;</span>
