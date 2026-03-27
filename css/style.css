@@ -169,10 +169,49 @@ body {
     padding: 0 1.5cm;
 }
 
+/* ========== СТИЛИ ДЛЯ ГЛАВНОЙ СТРАНИЦЫ С САЙДБАРОМ ========== */
+.main-layout {
+    display: flex;
+    gap: 50px;
+    margin-top: 40px;
+    width: 100%;
+    margin-bottom: 80px;
+    position: relative;
+}
+
+/* Разделительная линия между контентом и сайдбаром */
+.main-layout::before {
+    content: '';
+    position: absolute;
+    left: 66.666%;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, #2c3e50, transparent);
+    opacity: 0.3;
+}
+
+.main-content {
+    flex: 2;
+    padding-right: 30px;
+}
+
+.main-sidebar {
+    flex: 1;
+    padding-left: 15px;
+    /* Добавляем отступ сверху, чтобы выровнять с "Полезные материалы" */
+    margin-top: 12px; /* Отступ равен высоте заголовка "Полезные материалы" + отступ */
+}
+
 /* ========== СЕТКА ДЛЯ КАРТОЧЕК (MATERIALS) ========== */
 .section {
     margin-bottom: 50px;
     margin-top: 40px;
+}
+
+/* Первая секция (Полезные материалы) не должна иметь верхний отступ */
+.section:first-of-type {
+    margin-top: 0;
 }
 
 .section-title {
@@ -200,6 +239,8 @@ body {
     overflow: hidden;
     transition: all 0.3s ease;
     box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+    display: flex;
+    flex-direction: column;
 }
 
 .card:hover {
@@ -240,6 +281,7 @@ body {
     color: #5a6e7a;
     margin: 0 20px 15px;
     line-height: 1.5;
+    flex-grow: 1;
 }
 
 .card-link {
@@ -252,6 +294,74 @@ body {
 }
 
 .card-link:hover {
+    color: #1e2a3a;
+    text-decoration: underline;
+}
+
+/* ========== НОВОСТНАЯ ЛЕНТА НА ГЛАВНОЙ (КАРТОЧКИ) ========== */
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.news-card {
+    background: white;
+    border: 1px solid #e9ecef;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+    display: flex;
+    flex-direction: column;
+}
+
+.news-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    border-color: #2c3e50;
+}
+
+.news-card-image {
+    width: 100%;
+    height: 320px;
+    overflow: hidden;
+    background-color: #e9ecef;
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.news-card:hover .news-card-image {
+    transform: scale(1.05);
+}
+
+.news-card h3 {
+    color: #2c3e50;
+    margin: 20px 20px 10px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.news-card p {
+    color: #5a6e7a;
+    margin: 0 20px 15px;
+    line-height: 1.5;
+    flex-grow: 1;
+}
+
+.news-card-link {
+    color: #2c3e50;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-block;
+    margin: 0 20px 25px;
+    transition: all 0.3s;
+}
+
+.news-card-link:hover {
     color: #1e2a3a;
     text-decoration: underline;
 }
@@ -340,7 +450,51 @@ body {
     margin-bottom: 5px;
 }
 
-/* ========== НОВОСТНАЯ ЛЕНТА (ФОТО 520×347px) ========== */
+/* ========== СТИЛИ ДЛЯ САЙДБАРА (ПОПУЛЯРНОЕ) ========== */
+.sidebar-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #2c3e50;  /* ← ТЕМНАЯ ЛИНИЯ НА СВЕТЛОМ ФОНЕ */
+}
+
+.popular-list {
+    list-style: none;
+}
+
+.popular-list li {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #e9ecef;  /* ← СВЕТЛАЯ ЛИНИЯ МЕЖДУ СТАТЬЯМИ */
+}
+
+.popular-list li:last-child {
+    border-bottom: none;
+}
+
+.popular-date {
+    font-size: 12px;
+    color: #888;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.popular-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: #2c3e50;
+    text-decoration: none;
+    line-height: 1.4;
+}
+
+.popular-title:hover {
+    color: #1e2a3a;
+    text-decoration: underline;
+}
+
+/* ========== НОВОСТНАЯ ЛЕНТА (СТРАНИЦА NEWS) ========== */
 .news-layout {
     display: flex;
     gap: 50px;
@@ -370,49 +524,8 @@ body {
 .news-sidebar {
     flex: 1;
     padding-left: 30px;
-}
-
-.sidebar-title {
-    font-size: 20px;
-    font-weight: 600;
-    color: #2c3e50;
-    margin-bottom: 20px;
-    padding-bottom: 10px;
-    border-bottom: 2px solid #2c3e50;
-}
-
-.popular-list {
-    list-style: none;
-}
-
-.popular-list li {
-    margin-bottom: 20px;
-    padding-bottom: 15px;
-    border-bottom: 1px solid #e9ecef;
-}
-
-.popular-list li:last-child {
-    border-bottom: none;
-}
-
-.popular-date {
-    font-size: 12px;
-    color: #888;
-    display: block;
-    margin-bottom: 5px;
-}
-
-.popular-title {
-    font-size: 14px;
-    font-weight: 500;
-    color: #2c3e50;
-    text-decoration: none;
-    line-height: 1.4;
-}
-
-.popular-title:hover {
-    color: #1e2a3a;
-    text-decoration: underline;
+    /* Для страницы новостей тоже выравниваем */
+    margin-top: 0;
 }
 
 .news-item-main {
@@ -800,6 +913,27 @@ body {
         padding: 0 1cm;
     }
     
+    .main-layout {
+        flex-direction: column;
+        gap: 30px;
+        margin-bottom: 100px;
+    }
+    
+    .main-layout::before {
+        display: none;
+    }
+    
+    .main-content {
+        padding-right: 0;
+    }
+    
+    .main-sidebar {
+        padding-left: 0;
+        border-top: 1px solid #e9ecef;
+        padding-top: 30px;
+        margin-top: 0; /* Убираем отступ на мобильных */
+    }
+    
     .article-layout {
         flex-direction: column;
         padding: 0 1cm;
@@ -919,6 +1053,10 @@ body {
     .card-image {
         height: 250px;
     }
+    
+    .news-card-image {
+        height: 250px;
+    }
 }
 
 /* ========== ПРИЖИМАЕМ ПОДВАЛ С ОТСТУПОМ ========== */
@@ -959,20 +1097,20 @@ body {
     font-weight: 500;
     transition: all 0.3s;
     margin: 0 20px 25px;
+    border: none;
+    cursor: pointer;
 }
 
 .download-link:hover {
     background: #1e2a3a;
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    /* Убираем изменение цвета текста */
+    color: white;
 }
 
-/* Стили для темной темы */
-body.dark .download-link {
-    background: #ffffff;
-    color: #1a2332;
-}
-
-body.dark .download-link:hover {
-    background: #e0e0e0;
+/* Убираем эффект затемнения текста при любых состояниях */
+.download-link:active,
+.download-link:focus {
+    color: white;
 }
