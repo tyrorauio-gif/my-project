@@ -29,7 +29,7 @@
     </div>
     
     <div class="container">
-        <!-- Блок "Обо мне" с продающим текстом -->
+        <!-- Блок "Обо мне" -->
         <div class="teacher-info">
             <div class="teacher-photo" onclick="openModal(this.querySelector('img'))">
                 <img src="images/=Альберт.jpg" alt="Хамидуллин Альберт Фирдавесович - репетитор по высшей математике" style="width: 100%; height: 100%; object-fit: cover;">
@@ -72,56 +72,21 @@
                 <!-- Полезные материалы -->
                 <div class="section">
                     <h2 class="section-title">Полезные материалы</h2>
-                    <div class="cards-grid">
-                        <div class="card">
-                            <div class="card-image">
-                                <img src="images/ege.jpg" alt="Подготовка к ЕГЭ">
-                            </div>
-                            <h3>Подготовка к ЕГЭ</h3>
-                            <p>Сборник заданий, разбор сложных тем, рекомендации по подготовке к экзамену.</p>
-                            <a href="materials.html" class="card-link">Подробнее →</a>
-                        </div>
-                        <div class="card">
-                            <div class="card-image">
-                                <img src="images/math.jpg" alt="Высшая математика">
-                            </div>
-                            <h3>Высшая математика. 5-9 класс</h3>
-                            <p>Правила, упражнения, тесты для закрепления материала.</p>
-                            <a href="materials.html" class="card-link">Подробнее →</a>
-                        </div>
-                        <div class="card">
-                            <div class="card-image">
-                                <img src="images/tests.jpg" alt="Курсы и тесты">
-                            </div>
-                            <h3>Курсы. Список тестов</h3>
-                            <p>Список заданий для внеклассной работы по классам.</p>
-                            <a href="materials.html" class="card-link">Подробнее →</a>
-                        </div>
+                    <!-- Убираем cards-grid-horizontal, карточки будут напрямую в cards-scroll -->
+                    <div class="cards-scroll" id="materials-scroll">
+                        <!-- Карточки будут загружены сюда -->
                     </div>
                 </div>
+                
+                <!-- Разделитель между блоками -->
+                <div class="section-divider"></div>
                 
                 <!-- Новостная лента -->
                 <div class="section">
                     <h2 class="section-title">Новостная лента</h2>
-                    <div class="news-grid">
-                        <div class="news-card">
-                            <div class="news-card-image" style="background-image: url('images/news-birthday.jpg');"></div>
-                            <h3>26 марта</h3>
-                            <p>Сегодня замечательный праздник и лучший день на свете, а именно мой день рождения! Приходите с коньяком и конфетами на мои лекции...</p>
-                            <a href="news/article1.html" class="news-card-link">Подробнее →</a>
-                        </div>
-                        <div class="news-card">
-                            <div class="news-card-image" style="background-image: url('images/news-exam.jpg');"></div>
-                            <h3>20 марта</h3>
-                            <p>Обновлен список материалов для подготовки к ЕГЭ. Новые задания и видеоуроки уже доступны в разделе "Полезные материалы".</p>
-                            <a href="news/article2.html" class="news-card-link">Подробнее →</a>
-                        </div>
-                        <div class="news-card">
-                            <div class="news-card-image" style="background-image: url('images/news-olympiad.jpg');"></div>
-                            <h3>15 марта</h3>
-                            <p>Поздравляем призеров городской олимпиады по высшей математике! Молодцы! Так держать!</p>
-                            <a href="news/article3.html" class="news-card-link">Подробнее →</a>
-                        </div>
+                    <!-- Убираем cards-grid-horizontal, карточки будут напрямую в cards-scroll -->
+                    <div class="cards-scroll" id="news-scroll">
+                        <!-- Карточки будут загружены сюда -->
                     </div>
                 </div>
             </div>
@@ -171,5 +136,6 @@
     <script src="js/common.js"></script>
     <script src="js/github-pages-fix.js"></script>
     <script src="js/popular-posts.js"></script>
+    <script src="js/scroll.js"></script>
 </body>
 </html>

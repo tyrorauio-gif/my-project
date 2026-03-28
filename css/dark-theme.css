@@ -211,7 +211,8 @@ body.dark .section-divider {
     background: linear-gradient(90deg, transparent, #ffffff, transparent);
 }
 
-/* Горизонтальный скроллбар в тёмной теме */
+/* ========== ТЕМНАЯ ТЕМА ДЛЯ ГОРИЗОНТАЛЬНОЙ ПРОКРУТКИ ========== */
+
 body.dark .cards-scroll::-webkit-scrollbar-track {
     background: #2a3343;
 }
@@ -236,8 +237,15 @@ body.dark .card-horizontal p {
     color: #ffffff;
 }
 body.dark .card-horizontal .card-link {
-    color: #ffffff;
+    background: #ffffff;
+    color: #1a2332;
 }
 body.dark .card-horizontal .card-link:hover {
-    color: #cccccc;
+    background: #e0e0e0;
+    color: #1a2332;
+}
+
+body.dark .main-layout::before {
+    background: linear-gradient(to bottom, transparent, #ffffff, #ffffff, transparent);
+    opacity: 0.5;
 }
