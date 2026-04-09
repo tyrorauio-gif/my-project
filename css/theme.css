@@ -245,3 +245,15 @@ body.dark .main-content::after {
     background: linear-gradient(to bottom, transparent, #ffffff, transparent);
     opacity: 0.5;
 }
+/* Кнопки скачивания материалов в темной теме */
+body.dark .download-link {
+    background: #ffffff;
+    color: #2c3e50;
+    border: none;
+}
+
+body.dark .download-link:hover {
+    background: #e0e0e0;
+    color: #2c3e50;
+    transform: translateY(-2px);
+}

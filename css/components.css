@@ -177,20 +177,21 @@
     transform: scale(1.05) rotate(15deg);
 }
 
-/* Кнопки скачивания материалов */
+/* Кнопки скачивания материалов - как в новостях */
 .download-link {
     display: inline-block;
     background: #2c3e50;
     color: white;
-    padding: 10px 20px;
+    padding: 8px 22px;
     border-radius: 30px;
     text-decoration: none;
     font-size: 14px;
     font-weight: 500;
     transition: all 0.3s;
-    margin: 0 20px 25px;
+    margin: 0 0 25px 20px;
     border: none;
     cursor: pointer;
+    align-self: flex-start;  /* <-- ЭТО КЛЮЧЕВОЕ! Кнопка не растягивается */
 }
 
 .download-link:hover {
