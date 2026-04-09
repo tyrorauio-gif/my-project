@@ -1,0 +1,63 @@
+/* ========== БАЗОВЫЕ СТИЛИ ========== */
+
+/* Сброс отступов */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Основные настройки html */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+    scrollbar-gutter: stable;
+    height: 100%;
+}
+
+/* Основные настройки body */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    line-height: 1.6;
+    color: #2c3e50;
+    min-height: 100%;
+    position: relative;
+    padding-bottom: 150px;
+    padding-top: 0;
+}
+
+/* Основной контейнер для всего контента */
+.container {
+    width: 100%;
+    max-width: none;
+    margin: 0 auto;
+    padding: 0 57px;
+}
+
+/* Заголовки секций */
+.section-title {
+    font-size: 28px;
+    color: #2c3e50;
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid #2c3e50;
+    display: block;
+    font-weight: 600;
+    width: 100%;
+}
+
+/* Секции */
+.section {
+    margin-bottom: 50px;
+    margin-top: 40px;
+}
+
+.section:first-of-type {
+    margin-top: 0;
+}
+
+/* Контейнер для популярных статей */
+.popular-container {
+    width: 100%;
+}

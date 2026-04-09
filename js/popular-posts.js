@@ -1,77 +1,69 @@
-// ========== ПОПУЛЯРНЫЕ СТАТЬИ ==========
-// Единый источник данных для всех страниц
+/**
+ * ============================================
+ * ПОПУЛЯРНЫЕ СТАТЬИ (САЙДБАР)
+ * ============================================
+ */
+
 const popularPosts = [
     {
         date: "25 марта 2026",
         title: "С днем рождения! 🎂",
-        url: "article1.html",
-        isInternal: true,
-        description: "Праздничная лекция и приятные сюрпризы для учеников"
+        url: "news/article1.html",
+        isInternal: true
     },
     {
         date: "20 марта 2026",
         title: "Обновление материалов для подготовки к ЕГЭ",
-        url: "article2.html",
-        isInternal: true,
-        description: "Новые задания, видеоуроки и чек-листы уже доступны"
+        url: "news/article2.html",
+        isInternal: true
     },
     {
         date: "15 марта 2026",
         title: "Победа на городской олимпиаде! 🏆",
-        url: "article3.html",
-        isInternal: true,
-        description: "Наши ученики показали блестящие результаты"
+        url: "news/article3.html",
+        isInternal: true
     },
     {
         date: "10 апреля 2026",
         title: "Новый видеоурок по интегралам",
-        url: "article4.html",
-        isInternal: true,
-        description: "Разбор методов интегрирования и решение задач из ЕГЭ"
+        url: "news/article4.html",
+        isInternal: true
+    },
+    {
+        date: "28 марта 2026",
+        title: "Почему репетитор по математике — это инвестиция в будущее",
+        url: "news/article5.html",
+        isInternal: true
     },
     {
         date: "24 декабря 2024",
         title: "Что ждёт онлайн-образование в России в 2025 году",
         url: "https://example.com/online-education-2025",
-        isInternal: false,
-        description: "Анализ трендов и прогнозы развития"
+        isInternal: false
     },
     {
         date: "14 января 2025",
         title: "Как онлайн-школе или эксперту получать бесплатный трафик в 2025 году",
         url: "https://example.com/free-traffic",
-        isInternal: false,
-        description: "Стратегии продвижения в новых реалиях"
+        isInternal: false
     },
     {
         date: "10 февраля 2025",
         title: "Методология обучения: подходы и примеры",
         url: "https://example.com/teaching-methodology",
-        isInternal: false,
-        description: "Современные методы преподавания"
+        isInternal: false
     },
     {
         date: "5 марта 2026",
         title: "Топ-10 ошибок на ЕГЭ по математике",
         url: "#",
-        isInternal: false,
-        description: "Как не потерять баллы на экзамене"
-    },
-    {
-        date: "15 марта 2026",
-        title: "Как подготовиться к олимпиаде за месяц",
-        url: "#",
-        isInternal: false,
-        description: "Эффективная стратегия подготовки"
+        isInternal: false
     }
 ];
 
-// Настройка: сколько статей показывать (можно менять)
-const SHOW_TOP_POSTS = 9;  // 9 статей (можно изменить на любое число, например 5, 10, 20)
+const SHOW_TOP_POSTS = 9;
 
-// Единая функция для отображения популярных статей
 function renderPopularPosts() {
-    // Находим все контейнеры с классом popular-container
     const containers = document.querySelectorAll('.popular-container');
     
     if (containers.length === 0) {
@@ -79,14 +71,18 @@ function renderPopularPosts() {
         return;
     }
     
-    // Создаем HTML для популярных статей
     let html = '<h3 class="sidebar-title">Популярное</h3>\n<ul class="popular-list">\n';
     
-    // Берем нужное количество статей
     const postsToShow = popularPosts.slice(0, SHOW_TOP_POSTS);
     
     postsToShow.forEach(post => {
-        const targetUrl = post.isInternal ? post.url : post.url;
+        let targetUrl = post.url;
+
+        // 🔥 фикс для вложенной папки /news/
+        if (post.isInternal && window.location.pathname.includes('/news/')) {
+            targetUrl = '../' + post.url;
+        }
+
         const targetAttr = post.isInternal ? '' : 'target="_blank" rel="noopener noreferrer"';
         
         html += `    <li>\n`;
@@ -97,15 +93,13 @@ function renderPopularPosts() {
     
     html += '</ul>';
     
-    // Вставляем одинаковый HTML во все контейнеры
     containers.forEach(container => {
         container.innerHTML = html;
     });
     
-    console.log(`✅ Популярные статьи загружены (${containers.length} контейнеров, показано ${postsToShow.length} статей)`);
+    console.log(`✅ Популярные статьи загружены`);
 }
 
-// Автоматическая загрузка при готовности DOM
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', renderPopularPosts);
 } else {

@@ -1,0 +1,208 @@
+/* ========== АДАПТИВНОСТЬ ========== */
+
+@media (max-width: 1200px) {
+    .cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 900px) {
+    .contacts-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 1cm;
+    }
+    
+    /* Шапка */
+    .header-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+        justify-content: center;
+    }
+    
+    .header-logo img {
+        height: 50px;
+    }
+    
+    .nav-menu {
+        justify-content: center;
+    }
+    
+    /* Основной макет */
+    .main-layout {
+        flex-direction: column;
+        gap: 30px;
+        margin-bottom: 100px;
+    }
+    
+    .main-layout::before {
+        display: none;
+    }
+    
+    .main-content {
+        padding-right: 0;
+    }
+    
+    .main-sidebar {
+        padding-left: 0;
+        border-top: 1px solid #e9ecef;
+        padding-top: 30px;
+        margin-top: 0;
+    }
+    
+    .main-content::after {
+        display: none;
+    }
+    
+    /* Статьи */
+    .article-layout {
+        flex-direction: column;
+        padding: 0 1cm;
+        gap: 30px;
+    }
+    
+    .article-layout::before {
+        display: none;
+    }
+    
+    .article-main {
+        padding-right: 0;
+    }
+    
+    .article-sidebar {
+        padding-left: 0;
+        border-top: 1px solid #e9ecef;
+        padding-top: 30px;
+        margin-top: 20px;
+    }
+    
+    /* Новости */
+    .news-layout {
+        flex-direction: column;
+        gap: 30px;
+        margin-bottom: 100px;
+    }
+    
+    .news-layout::before {
+        display: none;
+    }
+    
+    .news-main {
+        padding-right: 0;
+    }
+    
+    .news-sidebar {
+        padding-left: 0;
+        border-top: 1px solid #e9ecef;
+        padding-top: 30px;
+        margin-top: 20px;
+    }
+    
+    .news-item-main {
+        flex-direction: column;
+        gap: 20px;
+        margin-bottom: 40px;
+        padding-bottom: 30px;
+    }
+    
+    .news-image {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 3 / 2;
+        border-radius: 12px;
+    }
+    
+    .news-title-main {
+        font-size: 20px;
+    }
+    
+    .news-excerpt {
+        font-size: 14px;
+        line-height: 1.5;
+    }
+    
+    .news-link {
+        padding: 6px 18px;
+        font-size: 13px;
+    }
+    
+    /* Герой-блок */
+    .hero-fullwidth {
+        min-height: 400px;
+    }
+    
+    .hero-fullwidth .hero-overlay {
+        padding: 60px 20px;
+    }
+    
+    .hero-fullwidth h1 {
+        font-size: 28px;
+    }
+    
+    /* Учитель */
+    .teacher-info {
+        text-align: center;
+        justify-content: center;
+    }
+    
+    .section-title {
+        font-size: 24px;
+    }
+    
+    /* Модальное окно */
+    .modal-close {
+        top: 15px;
+        right: 20px;
+        font-size: 30px;
+    }
+    
+    /* Статьи */
+    .article-title {
+        font-size: 32px;
+    }
+    
+    .article-body {
+        font-size: 16px;
+    }
+    
+    /* Карточки */
+    .card-image {
+        height: 250px;
+    }
+    
+    .news-card-image {
+        height: 250px;
+    }
+    
+    /* Кнопки */
+    .scroll-to-top {
+        bottom: 20px;
+        right: 6px;
+        width: 38px;
+        height: 38px;
+        font-size: 18px;
+    }
+    
+    .theme-toggle-fixed {
+        bottom: 70px;
+        right: 6px;
+        width: 38px;
+        height: 38px;
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 600px) {
+    .cards-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .contacts-grid {
+        grid-template-columns: 1fr;
+    }
+}

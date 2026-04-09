@@ -3,18 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Личный сайт учителя математики Хамидуллина Альберта Фирдавесовича. Подготовка к ЕГЭ, олимпиадам, высшая математика. Репетитор с 8-летним опытом.">
+    <meta name="keywords" content="репетитор, математика, ЕГЭ, высшая математика, подготовка">
+    <meta name="author" content="Хамидуллин Альберт Фирдавесович">
     <title>Личный сайт учителя Хамидуллина Альберта Фирдавесовича</title>
-    <link rel="stylesheet" href="css/style.css">
+    <!-- Подключаем разделенные CSS файлы -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/modal.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/theme.css">
 </head>
 <body>
+    <!-- ШАПКА САЙТА -->
     <div id="top" class="header">
-    <div class="header-content">
-        <!-- Логотип слева -->
-        <div class="header-logo">
-            <img src="images/logo.png" alt="Логотип">
-        </div>
-        
-        <!-- Навигация справа -->
+        <div class="header-content">
+            <!-- Логотип слева -->
+            <div class="header-logo">
+                <img src="images/logo.png" alt="Логотип">
+            </div>
+            <!-- Навигация справа -->
             <div class="nav-menu">
                 <a href="index.html" class="active">Главная</a>
                 <a href="materials.html">Материалы</a>
@@ -24,6 +32,7 @@
         </div>
     </div>
     
+    <!-- ГЛАВНЫЙ БЛОК С ФОНОВОЙ КАРТИНКОЙ -->
     <div class="hero-fullwidth" style="background-image: url('images/=Фон.jpg'); background-size: cover; background-position: center;">
         <div class="hero-overlay">
             <div class="hero-content">
@@ -35,11 +44,13 @@
     </div>
     
     <div class="container">
-        <!-- Блок "Обо мне" -->
+        <!-- БЛОК "ОБО МНЕ" -->
         <div class="teacher-info">
+            <!-- Фото учителя с возможностью открыть в модальном окне -->
             <div class="teacher-photo" onclick="openModal(this.querySelector('img'))">
                 <img src="images/=Альберт.jpg" alt="Хамидуллин Альберт Фирдавесович - репетитор по высшей математике" style="width: 100%; height: 100%; object-fit: cover;">
             </div>
+            <!-- Текстовая информация об учителе -->
             <div class="teacher-text">
                 <h2>Хамидуллин Альберт Фирдавесович</h2>
                 <p><strong>Репетитор по высшей математике | Эксперт по подготовке к ЕГЭ | 8 лет успешного опыта</strong></p>
@@ -72,37 +83,38 @@
             </div>
         </div>
         
-        <!-- Основной макет с сайдбаром -->
+        <!-- ОСНОВНОЙ МАКЕТ С САЙДБАРОМ -->
         <div class="main-layout">
             <div class="main-content">
-                <!-- Полезные материалы -->
+                <!-- СЕКЦИЯ "ПОЛЕЗНЫЕ МАТЕРИАЛЫ" -->
                 <div class="section">
                     <h2 class="section-title">Полезные материалы</h2>
-                    <!-- Убираем cards-grid-horizontal, карточки будут напрямую в cards-scroll -->
+                    <!-- Горизонтальный скролл с карточками материалов -->
                     <div class="cards-scroll" id="materials-scroll">
-                        <!-- Карточки будут загружены сюда -->
+                        <!-- Карточки будут загружены динамически через JS -->
                     </div>
                 </div>
                 
-                <!-- Разделитель между блоками -->
+                <!-- РАЗДЕЛИТЕЛЬ МЕЖДУ БЛОКАМИ -->
                 <div class="section-divider"></div>
                 
-                <!-- Новостная лента -->
+                <!-- СЕКЦИЯ "НОВОСТНАЯ ЛЕНТА" -->
                 <div class="section">
                     <h2 class="section-title">Новостная лента</h2>
-                    <!-- Убираем cards-grid-horizontal, карточки будут напрямую в cards-scroll -->
+                    <!-- Горизонтальный скролл с карточками новостей -->
                     <div class="cards-scroll" id="news-scroll">
-                        <!-- Карточки будут загружены сюда -->
+                        <!-- Карточки будут загружены динамически через JS -->
                     </div>
                 </div>
             </div>
             
+            <!-- САЙДБАР С ПОПУЛЯРНЫМИ СТАТЬЯМИ -->
             <div class="main-sidebar">
                 <div class="popular-container"></div>
             </div>
         </div>
         
-        <!-- Контакты -->
+        <!-- СЕКЦИЯ "КОНТАКТЫ" -->
         <div class="section">
             <h2 class="section-title">Контакты</h2>
             <div class="cards-grid">
@@ -126,21 +138,24 @@
         </div>
     </div>
     
+    <!-- ПОДВАЛ -->
     <div class="footer">
         <p>© 2026 Личный сайт учителя Хамидуллина Альберта Фирдавесовича</p>
         <p>Все права защищены</p>
     </div>
     
-    <button id="themeToggle" class="theme-toggle-fixed">🌙</button>
-    <button id="scrollToTopBtn" class="scroll-to-top">↑</button>
+    <!-- КНОПКИ -->
+    <button id="themeToggle" class="theme-toggle-fixed" aria-label="Переключить тему">🌙</button>
+    <button id="scrollToTopBtn" class="scroll-to-top" aria-label="Наверх">↑</button>
     
-    <div id="photoModal" class="modal" onclick="closeModal()">
+    <!-- МОДАЛЬНОЕ ОКНО ДЛЯ ПРОСМОТРА ИЗОБРАЖЕНИЙ -->
+    <div class="modal" onclick="closeModal()">
         <span class="modal-close" onclick="closeModal()">&times;</span>
         <img class="modal-content" id="modalImage">
     </div>
     
+    <!-- ПОДКЛЮЧЕНИЕ СКРИПТОВ -->
     <script src="js/common.js"></script>
-    <script src="js/github-pages-fix.js"></script>
     <script src="js/popular-posts.js"></script>
     <script src="js/scroll.js"></script>
 </body>
