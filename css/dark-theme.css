@@ -176,7 +176,6 @@ body.dark * {
     scrollbar-color: #ffffff #1a2332;
 }
 
-/* ========== СТИЛИ ДЛЯ ПОПУЛЯРНОГО В ТЕМНОЙ ТЕМЕ ========== */
 body.dark .sidebar-title {
     border-bottom: 2px solid #ffffff;
 }
@@ -185,7 +184,6 @@ body.dark .popular-list li {
     border-bottom-color: #2a3343;
 }
 
-/* ========== СТИЛИ ДЛЯ ГОРИЗОНТАЛЬНОЙ ПРОКРУТКИ В ТЕМНОЙ ТЕМЕ ========== */
 body.dark .cards-scroll::-webkit-scrollbar-track {
     background: #2a3343;
 }
@@ -194,31 +192,6 @@ body.dark .cards-scroll::-webkit-scrollbar-thumb {
     background: #ffffff;
 }
 
-body.dark .cards-scroll::-webkit-scrollbar-thumb:hover {
-    background: #e0e0e0;
-}
-
-body.dark .scroll-btn {
-    background: #ffffff;
-    color: #1a2332;
-}
-
-body.dark .scroll-btn:hover {
-    background: #e0e0e0;
-}
-
-body.dark .section-divider {
-    background: linear-gradient(90deg, transparent, #ffffff, transparent);
-}
-
-/* ========== ТЕМНАЯ ТЕМА ДЛЯ ГОРИЗОНТАЛЬНОЙ ПРОКРУТКИ ========== */
-
-body.dark .cards-scroll::-webkit-scrollbar-track {
-    background: #2a3343;
-}
-body.dark .cards-scroll::-webkit-scrollbar-thumb {
-    background: #ffffff;
-}
 body.dark .cards-scroll::-webkit-scrollbar-thumb:hover {
     background: #e0e0e0;
 }
@@ -227,25 +200,30 @@ body.dark .card-horizontal {
     background: #1a2332;
     border: 1px solid #2a3343;
 }
+
 body.dark .card-horizontal:hover {
     border-color: #ffffff;
 }
+
 body.dark .card-horizontal h3 {
     color: #ffffff;
 }
+
 body.dark .card-horizontal p {
     color: #ffffff;
 }
+
 body.dark .card-horizontal .card-link {
     background: #ffffff;
     color: #1a2332;
 }
+
 body.dark .card-horizontal .card-link:hover {
     background: #e0e0e0;
     color: #1a2332;
 }
 
-body.dark .main-layout::before {
-    background: linear-gradient(to bottom, transparent, #ffffff, #ffffff, transparent);
+body.dark .main-content::after {
+    background: linear-gradient(to bottom, transparent, #ffffff, transparent);
     opacity: 0.5;
 }

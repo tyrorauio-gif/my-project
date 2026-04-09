@@ -9,6 +9,7 @@
 html {
     scroll-behavior: smooth;
     scroll-padding-top: 80px;
+    scrollbar-gutter: stable;
 }
 
 /* Общий фон страницы — светлый */
@@ -38,10 +39,30 @@ body {
     margin: 0 auto;
     padding: 0 30px;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between; /* Изменено с flex-end на space-between */
     align-items: center;
     flex-wrap: wrap;
     gap: 30px;
+}
+
+/* Логотип */
+.header-logo {
+    display: flex;
+    align-items: center;
+}
+
+.header-logo img {
+    height: 50px;
+    width: auto;
+    display: block;
+    cursor: pointer;
+}
+
+/* Убираем эффекты при наведении */
+.header-logo img:hover {
+    transform: none;
+    box-shadow: none;
+    opacity: 1;
 }
 
 .nav-menu {
@@ -166,7 +187,7 @@ body {
     width: 100%;
     max-width: none;
     margin: 0 auto;
-    padding: 0 1.5cm;
+    padding: 0 57px;
 }
 
 /* ========== СТИЛИ ДЛЯ ГЛАВНОЙ СТРАНИЦЫ С САЙДБАРОМ ========== */
@@ -189,7 +210,7 @@ body {
 .main-content::after {
     content: '';
     position: absolute;
-    right: -25px; /* Половина от gap 50px */
+    right: -25px;
     top: 0;
     bottom: 0;
     width: 1px;
@@ -232,13 +253,20 @@ body {
     width: 100%;
 }
 
+/* ОСНОВНОЙ КОНТЕЙНЕР ДЛЯ КАРТОЧЕК */
 .cards-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
     margin-top: 20px;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+    width: 100%;
 }
 
+/* КАРТОЧКА */
 .card {
     background: white;
     border: 1px solid #e9ecef;
@@ -248,6 +276,8 @@ body {
     box-shadow: 0 5px 15px rgba(0,0,0,0.03);
     display: flex;
     flex-direction: column;
+    margin: 0;
+    width: 100%;
 }
 
 .card:hover {
@@ -263,13 +293,21 @@ body {
     overflow: hidden;
     background-color: #e9ecef;
     cursor: pointer;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .card-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center;
     display: block;
+    margin: 0;
+    padding: 0;
     transition: transform 0.3s ease;
 }
 
@@ -464,7 +502,7 @@ body {
     color: #2c3e50;
     margin-bottom: 20px;
     padding-bottom: 10px;
-    border-bottom: 2px solid #2c3e50;  /* ← ТЕМНАЯ ЛИНИЯ НА СВЕТЛОМ ФОНЕ */
+    border-bottom: 2px solid #2c3e50;
 }
 
 .popular-list {
@@ -474,7 +512,7 @@ body {
 .popular-list li {
     margin-bottom: 20px;
     padding-bottom: 15px;
-    border-bottom: 1px solid #e9ecef;  /* ← СВЕТЛАЯ ЛИНИЯ МЕЖДУ СТАТЬЯМИ */
+    border-bottom: 1px solid #e9ecef;
 }
 
 .popular-list li:last-child {
@@ -531,7 +569,6 @@ body {
 .news-sidebar {
     flex: 1;
     padding-left: 30px;
-    /* Для страницы новостей тоже выравниваем */
     margin-top: 0;
 }
 
@@ -938,7 +975,7 @@ body {
         padding-left: 0;
         border-top: 1px solid #e9ecef;
         padding-top: 30px;
-        margin-top: 0; /* Убираем отступ на мобильных */
+        margin-top: 0;
     }
     
     .article-layout {
@@ -988,6 +1025,10 @@ body {
         text-align: center;
         gap: 15px;
         justify-content: center;
+    }
+    
+    .header-logo img {
+        height: 50px;
     }
     
     .nav-menu {
@@ -1112,39 +1153,12 @@ body {
     background: #1e2a3a;
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    /* Убираем изменение цвета текста */
     color: white;
 }
 
-/* Убираем эффект затемнения текста при любых состояниях */
 .download-link:active,
 .download-link:focus {
     color: white;
-}
-/* Горизонтальный скролл */
-.cards-scroll {
-    display: flex;
-    overflow-x: auto;
-    gap: 25px;
-    padding: 5px 0 15px 0;
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
-}
-
-/* Стилизация скроллбара */
-.cards-scroll::-webkit-scrollbar {
-    height: 8px;
-}
-.cards-scroll::-webkit-scrollbar-track {
-    background: #e9ecef;
-    border-radius: 8px;
-}
-.cards-scroll::-webkit-scrollbar-thumb {
-    background: #2c3e50;
-    border-radius: 8px;
-}
-.cards-scroll::-webkit-scrollbar-thumb:hover {
-    background: #1e2a3a;
 }
 
 /* ========== ГОРИЗОНТАЛЬНЫЙ СКРОЛЛ ========== */
@@ -1154,52 +1168,52 @@ body {
     gap: 30px;
     padding: 10px 5px 20px;
     scroll-behavior: smooth;
-
-    /* ровно 3 карточки */
+    -webkit-overflow-scrolling: touch;
     max-width: calc(380px * 3 + 30px * 2 + 20px);
 }
 
-/* Скроллбар */
+/* Стилизация скроллбара */
 .cards-scroll::-webkit-scrollbar {
     height: 8px;
 }
+
 .cards-scroll::-webkit-scrollbar-track {
     background: #e9ecef;
     border-radius: 10px;
 }
+
 .cards-scroll::-webkit-scrollbar-thumb {
     background: #2c3e50;
     border-radius: 10px;
 }
 
-/* ========== КАРТОЧКА (НОВАЯ КРАСИВАЯ) ========== */
-.card-horizontal {
-    width: 380px; /* БОЛЬШЕ */
-    flex-shrink: 0;
+.cards-scroll::-webkit-scrollbar-thumb:hover {
+    background: #1e2a3a;
+}
 
+/* ========== КАРТОЧКА (ГОРИЗОНТАЛЬНАЯ) ========== */
+.card-horizontal {
+    width: 380px;
+    flex-shrink: 0;
     background: #ffffff;
-    border: 1px solid #e0e6ed; /* РАМКА */
+    border: 1px solid #e0e6ed;
     border-radius: 14px;
     overflow: hidden;
-
     display: flex;
     flex-direction: column;
-
     transition: all 0.3s ease;
     box-shadow: 0 6px 18px rgba(0,0,0,0.05);
 }
 
-/* Эффект при наведении */
 .card-horizontal:hover {
     transform: translateY(-6px);
     border-color: #2c3e50;
     box-shadow: 0 18px 35px rgba(0,0,0,0.12);
 }
 
-/* Картинка */
 .card-horizontal .card-image {
     width: 100%;
-    height: 260px; /* БОЛЬШЕ */
+    height: 260px;
     overflow: hidden;
     background: #f1f3f5;
 }
@@ -1215,7 +1229,6 @@ body {
     transform: scale(1.05);
 }
 
-/* Заголовок */
 .card-horizontal h3 {
     font-size: 20px;
     font-weight: 600;
@@ -1223,7 +1236,6 @@ body {
     color: #2c3e50;
 }
 
-/* Описание */
 .card-horizontal p {
     font-size: 15px;
     color: #5a6e7a;
@@ -1231,26 +1243,60 @@ body {
     flex-grow: 1;
 }
 
-/* Кнопка */
 .card-horizontal .card-link {
     display: inline-block;
     margin: 0 18px 20px;
-
     background: #2c3e50;
     color: #fff;
     text-decoration: none;
     text-align: center;
-
     padding: 10px;
     border-radius: 25px;
-
     font-size: 14px;
     font-weight: 500;
-
     transition: 0.3s;
 }
 
 .card-horizontal .card-link:hover {
     background: #1e2a3a;
     transform: translateY(-2px);
+}
+/* ========== СЕТКА ДЛЯ КОНТАКТОВ (2 ряда по 3 карточки) ========== */
+.contacts-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+/* Стили для карточек контактов */
+.contact-card {
+    text-align: center;
+    padding: 30px 20px;
+}
+
+.contact-icon {
+    font-size: 48px;
+    margin-bottom: 15px;
+}
+
+/* Карта */
+.map-card {
+    padding: 0;
+    overflow: hidden;
+}
+
+/* Адаптивность для планшетов */
+@media (max-width: 900px) {
+    .contacts-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Адаптивность для телефонов */
+@media (max-width: 600px) {
+    .contacts-grid {
+        grid-template-columns: 1fr;
+    }
 }
