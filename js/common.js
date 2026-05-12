@@ -175,7 +175,7 @@ function enableDarkTheme() {
     document.body.classList.add('dark');
     if (themeToggle) themeToggle.textContent = '☀️';
     localStorage.setItem('theme', 'dark');
-     updateLogo(); // Обновляем логотип
+    updateLogo(); // Обновляем логотип
 }
 
 /**
@@ -185,7 +185,7 @@ function disableDarkTheme() {
     document.body.classList.remove('dark');
     if (themeToggle) themeToggle.textContent = '🌙';
     localStorage.setItem('theme', 'light');
-     updateLogo(); // Обновляем логотип
+    updateLogo(); // Обновляем логотип
 }
 
 /**
@@ -199,6 +199,7 @@ function setTheme(isDark) {
         disableDarkTheme();
     }
 }
+
 // ========== ЛОГОТИП ==========
 
 /**
@@ -209,7 +210,17 @@ function updateLogo() {
     if (!logo) return;
     
     const isDark = document.body.classList.contains('dark');
-    logo.src = isDark ? 'images/logo-dark.png' : 'images/logo.png';
+    const isNewsArticle = window.location.pathname.includes('/news/');
+    
+    // Выбираем правильный путь в зависимости от расположения страницы
+    let logoSrc;
+    if (isNewsArticle) {
+        logoSrc = isDark ? '../images/logo-dark.png' : '../images/logo.png';
+    } else {
+        logoSrc = isDark ? 'images/logo-dark.png' : 'images/logo.png';
+    }
+    
+    logo.src = logoSrc;
 }
 
 // ========== ОБРАБОТЧИКИ ИЗОБРАЖЕНИЙ ==========
@@ -252,6 +263,7 @@ function initAll() {
     
     setActiveNavLink();
     initImageHandlers();
+    updateLogo(); // Устанавливаем правильный логотип при загрузке
     
     // Загрузка сохраненной темы
     const savedTheme = localStorage.getItem('theme');
