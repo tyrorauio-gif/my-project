@@ -175,6 +175,7 @@ function enableDarkTheme() {
     document.body.classList.add('dark');
     if (themeToggle) themeToggle.textContent = '☀️';
     localStorage.setItem('theme', 'dark');
+     updateLogo(); // Обновляем логотип
 }
 
 /**
@@ -184,6 +185,7 @@ function disableDarkTheme() {
     document.body.classList.remove('dark');
     if (themeToggle) themeToggle.textContent = '🌙';
     localStorage.setItem('theme', 'light');
+     updateLogo(); // Обновляем логотип
 }
 
 /**
@@ -196,6 +198,18 @@ function setTheme(isDark) {
     } else {
         disableDarkTheme();
     }
+}
+// ========== ЛОГОТИП ==========
+
+/**
+ * Обновляет логотип в зависимости от текущей темы
+ */
+function updateLogo() {
+    const logo = document.querySelector('.header-logo img');
+    if (!logo) return;
+    
+    const isDark = document.body.classList.contains('dark');
+    logo.src = isDark ? 'images/logo-dark.png' : 'images/logo.png';
 }
 
 // ========== ОБРАБОТЧИКИ ИЗОБРАЖЕНИЙ ==========
